@@ -149,6 +149,16 @@ nav .wrap{display:flex;align-items:center;gap:12px;padding:10px max(5vw,16px)}
 /* cinema */
 .reels{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin-top:40px}
 @media(min-width:961px){.reels{grid-template-columns:repeat(3,minmax(0,1fr))}.reels.flat .reel:first-child{grid-column:auto;flex-direction:column}.reels.flat .reel:first-child .screen{flex:none}.reels.flat .reel:first-child .tx{padding:20px;justify-content:flex-start}.reels.flat .reel:first-child h3{font:600 20px/1.2 "Chakra Petch"}.reel:first-child{grid-column:1/-1;flex-direction:row}.reel:first-child .screen{flex:0 0 62%}.reel:first-child .tx{justify-content:center;padding:32px}.reel:first-child h3{font:700 30px Unbounded}}
+.arts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-top:36px}
+.art{position:relative;display:flex;flex-direction:column;gap:14px;min-height:250px;padding:24px;border-radius:22px;background:var(--panel);border:1px solid var(--line);text-decoration:none;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
+.art::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--ac)}
+.art::after{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--ac) 30%,transparent),transparent 70%)}
+.art:hover{transform:translateY(-4px);border-color:var(--ac);box-shadow:0 18px 40px -24px var(--ac)}
+.art .top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font:600 13px "Chakra Petch";color:var(--dim)}
+.art .pj{color:#06170e;background:var(--ac);border-radius:6px;padding:2px 9px;font-weight:700}
+.art h3{font:700 clamp(19px,1.8vw,22px)/1.25 Unbounded;margin:0;flex:1}
+.art .bot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font:600 13.5px "Chakra Petch";color:var(--dim)}
+.art .bot b{color:color-mix(in srgb,var(--ac) 62%,var(--ink))}
 .rbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:28px}
 .age{position:absolute;right:14px;bottom:20px;z-index:3;font:700 12.5px "Chakra Petch";color:#eaf6ef;background:rgba(3,5,6,.72);border:1px solid rgba(255,255,255,.16);border-radius:99px;padding:4px 10px;display:inline-flex;gap:6px;align-items:center}
 .age::before{content:"";width:6px;height:6px;border-radius:50%;background:#96EEBB}
@@ -242,7 +252,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 
 <nav><div class="wrap">
   <a class="me" href="#top"><img src="assets/pfp.jpg" alt="">VETERAN</a>
-  <div class="links"><a href="#identity">Identity</a><a href="#posts">Posts</a><a href="#map">Star map</a><a href="#cinema">Cinema</a><a href="#eng">Engineering</a></div>
+  <div class="links"><a href="#identity">Identity</a><a href="#posts">Posts</a><a href="#map">Star map</a><a href="#cinema">Cinema</a><a href="#writing">Writing</a><a href="#eng">Engineering</a></div>
   <button class="tog" id="tog" type="button" aria-label="Switch light or dark mode"></button>
   <a class="btn p s" href="#comms">Hire me</a>
 </div></nav>
@@ -325,8 +335,15 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
   <div style="margin-top:22px;text-align:center"><button class="btn" id="rmore" type="button">Show all</button></div>
 </div></section>
 
+<section class="band" id="writing" style="padding-top:0"><div class="wrap rv">
+  <div class="deck"><b>DECK 05</b><span>Transmissions</span></div>
+  <h2>Things I wrote</h2>
+  <p class="lead">Long-form, research-first articles on X. Tap one to read it.</p>
+  <div class="arts" id="arts"></div>
+</div></section>
+
 <section class="band" style="padding-top:0"><div class="wrap rv">
-  <div class="deck"><b>DECK 05</b><span>Trophy wall</span></div>
+  <div class="deck"><b>DECK 06</b><span>Trophy wall</span></div>
   <div class="tro">
     <div class="sc"><div class="ihd"><span id="slg" style="width:56px;height:56px;border-radius:14px;overflow:hidden;flex:none"><img src="assets/scribble.jpg" alt="Scribble DAO" style="width:100%;height:100%;object-fit:cover"></span><div class="hud">Scribble DAO</div></div><strong>5×</strong><div class="medals" id="medals"></div><p class="lead" style="margin:0">Five bounty wins on Scribble DAO.</p></div>
     <div class="nums">
@@ -339,7 +356,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 
 
 <section class="band" id="eng" style="padding-top:0"><div class="wrap rv">
-  <div class="deck"><b>DECK 06</b><span>Engineering bay</span></div>
+  <div class="deck"><b>DECK 07</b><span>Engineering bay</span></div>
   <h2>I don't just post about tech. I ship it.</h2>
   <p class="lead">JavaScript, TypeScript, React, Node.js and Express. I test the products I write about, so the content gets them right.</p>
   <div class="eng">
@@ -351,7 +368,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 <section class="band" id="comms" style="padding-top:0"><div class="wrap rv">
   <div class="comms">
     <div>
-      <div class="deck"><b>DECK 07</b><span>Comms</span></div>
+      <div class="deck"><b>DECK 08</b><span>Comms</span></div>
       <h2>Send a transmission.</h2>
       <p class="lead">Build your brief here, copy it, and drop it in my X or Telegram DMs, Discord or inbox. I'll come back with a plan.</p>
       <div class="direct">
@@ -375,8 +392,10 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 <footer><div class="wrap"><span>© 2026 Veteran · Broadcasting from Africa</span><a class="btn s" href="#top">Back to top ↑</a></div></footer>
 <div id="toast" role="status"></div>
 
+<script src="content.js"></script>
 <script>
 {
+const C=window.CONTENT;
 const $=s=>document.querySelector(s),R=document.documentElement;
 const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2200)};
@@ -412,29 +431,13 @@ const skills=['Research-first threads','AI films','Motion design','Long-form art
 $('#tk').innerHTML=[...skills,...skills].map(c=>`<span>${c}</span>`).join('');
 
 /* board */
-const posts=[
- ['actionmodel','ACTION MODEL','ACTIVE','My current ambassadorship. Content for Action Model AI, including the Action Model × Sweep Global collaboration with a $150K prize pool.'],
- ['edel','EDEL FINANCE','LANDED','Former ambassador. Weekly research-backed long-form posts across three lanes: Lending, Canton and Structural Growth, plus the EDELx utility story.'],
- ['ygg','YGG','LANDED','Former ambassador for YGG, the Web3 gaming guild, creating content for its community and campaigns.'],
- ['1win','1WIN','LANDED','Former ambassador. World Cup prediction market content, token sale coverage and the 1win creator program.']
-];
+const posts=C.ambassador.map(a=>[a.logo,a.name,a.status,a.about]);
 $('#rows').innerHTML=posts.map((p,i)=>`<button class="br" type="button" aria-expanded="${i===0}"><img src="assets/${p[0]}.jpg" alt=""><span class="flap" data-t="${p[1]}">${p[1]}</span><span class="flap w" data-t="AMBASSADOR">AMBASSADOR</span><span class="st${p[2]==='ACTIVE'?'':' l'}">${p[2]}</span><p class="bd">${p[3]}</p></button>`).join('');
 $('#rows').addEventListener('click',e=>{const b=e.target.closest('.br');if(!b)return;const o=b.getAttribute('aria-expanded')==='true';document.querySelectorAll('.br').forEach(x=>x.setAttribute('aria-expanded','false'));b.setAttribute('aria-expanded',String(!o));b.querySelectorAll('.flap').forEach(f=>decode(f,f.dataset.t,500))});
 
 /* star map */
-const ag=[
- ['Creator Academy','Creator network','Campaign rounds through the Academy, including the KiiChain Creators Academy competition and Poise Finance Round 2.',['KiiChain','Poise Finance']],
- ['Surgence Labs','Creator agency','My most active agency. Four campaigns run through Surgence.',['Project Phäros','Chimera Wallet','GetOn','IPX Fan Szn'],'surgence'],
- ['Nfluence','Creator agency','Creator campaigns run through Nfluence.',[]],
- ['Bricktopian','Creator agency','Runs creator campaigns I take part in. I won its best post of the week with a video, and two of my PFPs are Bricktopian NFTs.',['Best post of the week'],'bricktopian'],
- ['Arcadia','Creator agency','Creator campaigns run through Arcadia.',[]],
- ['Momentum','Creator agency','Creator campaigns run through Momentum.',[]],
- ['AP Collective','Hub by AP Collective','The quest hub where I picked up some of my biggest exchange and gaming campaigns.',['MEXC','ClawArena','HaloArena']],
- ['The Sphere','Creator agency','Creator campaigns run through The Sphere.',[]],
- ['Kronicles','Creator agency','Glyph Universe campaign: a thread and a 16:9 motion video for the AI-judged text battle game on Base.',['Glyph Universe'],'kronicles'],
- ['Pandora','Creator agency','Creator campaigns run through Pandora.',[]]
-];
-const home=['Verge Collective','Home base · my agency','My own UGC and KOL agency. I assemble creator squads, write the proposals and run campaigns from brief to posted entries.',['UGC','KOL','Proposals']];
+const ag=C.agencies.map(a=>[a.name,a.label,a.about,a.projects||[],a.logo]);
+const home=[C.home.name,C.home.label,C.home.about,C.home.tags||[]];
 const ini=n=>n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
 const cx=400,cy=280;
 const pos=ag.map((a,i)=>{const t=i/ag.length*Math.PI*2-Math.PI/2+.15,r=i%2?160:226;return[cx+Math.cos(t)*r*1.45,cy+Math.sin(t)*r*.98]});
@@ -456,25 +459,15 @@ $('#chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(c)
 pick(-1);
 
 /* reels */
-const reels=[
- ['Bricktopian AI film','ai','AI cinematic short','My AI film for the Bricktopian community. Concept board, stills and shot-by-shot motion, built with ChatGPT and Seedance.',['ChatGPT','Seedance','16:9'],['#0f3d2a','#96EEBB'],'2123510372296466942'],
- ['Edited clip with AI','ai','AI clip','A clip I edited with AI: pacing, cuts and sound done end to end.',['AI edit','Motion'],['#2a1d5c','#8b6cf0'],'2123227603813244933'],
- ['Edited clip with AI','ai','AI clip','Another AI-edited clip, built to hold attention from the first second.',['AI edit','Motion'],['#3d2c00','#ffc21a'],'2123019765627183582',1],
- ['GetOn','promo','Passport waitlist video','A video for the GetOn Passport waitlist UGC activation.',['AI video','UGC'],['#0b3a3a','#6fe0d0'],'2122813442704671008'],
- ['Primus Labs','explain','AI explainer','An AI-built video that lands the Primus Labs story in seconds instead of a wall of text.',['AI video','Voiceover'],['#3a0f2e','#ff8fc8'],'2117896716875714888'],
- ['TermiX','promo','Project video','A video I made for TermiX, the agent settlement layer on BNB Chain.',['Video','Motion'],['#10233d','#6fb6ff'],'2113718590146814430'],
- ['Glyph Universe','promo','Project video','A video for Glyph Universe, the AI-judged text battle game on Base.',['Video','Motion'],['#2b1240','#c78bff'],'2112960828961960336'],
- ['KiiChain','explain','Whiteboard illustration','A whiteboard-style illustrated explainer for KiiChain.',['Whiteboard','Illustration'],['#2a0f3a','#ff6fd8'],'2105788303479873822'],
- ['Canborsa Trading Arena','walk','Walkthrough + voiceover','An original walkthrough of the Canborsa Trading Arena, with my own voiceover.',['Walkthrough','Voiceover'],['#06283a','#4fd1ff'],'2098815960203346120'],
- ['Ragnarok Breaker','walk','Gameplay recording','A gameplay recording of Ragnarok Breaker.',['Gameplay','Recording'],['#3a0d0d','#ff7a6b'],'2081761154087403634'],
- ['MEXC','promo','Campaign video','A campaign video for MEXC, picked up through the Hub by AP Collective.',['Video','Campaign'],['#0b2a1a','#3ee07a'],'2075020863502528702'],
- ['Waifu Sweeper','walk','Video walkthrough','A video walkthrough of Waifu Sweeper.',['Walkthrough','Gameplay'],['#3a1030','#ffa3d9'],'2066594992018325580']
-].map(([t,cat,k,d,tg,col,id,noVid],i)=>[t,k,d,tg,col,`https://x.com/its_veteran1/status/${id}${noVid?'':'/video/1'}`,cat,i,new Date(Number((BigInt(id)>>22n)+1288834974657n))]);
+const PAL=[['#0f3d2a','#96EEBB'],['#2a1d5c','#8b6cf0'],['#3d2c00','#ffc21a'],['#0b3a3a','#6fe0d0'],['#3a0f2e','#ff8fc8'],['#10233d','#6fb6ff'],['#2b1240','#c78bff'],['#2a0f3a','#ff6fd8'],['#06283a','#4fd1ff'],['#3a0d0d','#ff7a6b'],['#0b2a1a','#3ee07a'],['#3a1030','#ffa3d9']];
+const xdate=id=>new Date(Number((BigInt(id)>>22n)+1288834974657n));
+const reels=C.videos.map((v,i)=>[v.title,v.kind,v.about,v.tags||[],v.colors||PAL[i%PAL.length],`https://x.com/its_veteran1/status/${v.post}${v.video?'/video/1':''}`,v.type,i,xdate(v.post)]);
+[...reels].sort((a,b)=>a[8]-b[8]).forEach((r,k)=>r[9]=k+1);
 const ago=d=>{const days=Math.floor((Date.now()-d)/864e5);if(days<1)return'today';if(days<2)return'yesterday';if(days<14)return`${days} days ago`;if(days<60)return`${Math.floor(days/7)} weeks ago`;if(days<365){const m=Math.floor(days/30.44);return`${m} month${m>1?'s':''} ago`}const y=Math.floor(days/365);return`${y} year${y>1?'s':''} ago`};
 const fdate=d=>d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 let rnew=true;
-const cats=[['all','All'],['ai','AI films & edits'],['promo','Project videos'],['walk','Walkthroughs & gameplay'],['explain','Explainers']];
-const thumb=r=>{const [bg,ac]=r[4],i=r[7],n=String(i+1).padStart(2,'0'),fs=r[0].length>18?15:r[0].length>13?19:24;return`<svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="tg${i}" cx="78%" cy="30%" r="90%"><stop offset="0" stop-color="${ac}" stop-opacity=".55"/><stop offset=".55" stop-color="${bg}"/><stop offset="1" stop-color="#030506"/></radialGradient><filter id="gr${i}"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0"/></filter></defs><rect width="320" height="180" fill="url(#tg${i})"/><rect width="320" height="180" filter="url(#gr${i})"/><text x="22" y="40" style="font:700 10px Chakra Petch;fill:${ac};letter-spacing:2px">VETERAN FILMS · ${n}</text><text x="22" y="132" style="font:900 ${fs}px Unbounded;fill:#fff">${r[0]}</text><rect x="22" y="146" width="40" height="3" fill="${ac}"/><text x="298" y="40" text-anchor="end" style="font:900 34px Unbounded;fill:${ac};opacity:.35">${n}</text></svg>`};
+const cats=[['all','All'],['ai','AI films & edits'],['promo','Project videos'],['walk','Walkthroughs & tutorials'],['explain','Explainers']];
+const thumb=r=>{const [bg,ac]=r[4],i=r[7],n=String(r[9]).padStart(2,'0'),fs=r[0].length>18?15:r[0].length>13?19:24;return`<svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="tg${i}" cx="78%" cy="30%" r="90%"><stop offset="0" stop-color="${ac}" stop-opacity=".55"/><stop offset=".55" stop-color="${bg}"/><stop offset="1" stop-color="#030506"/></radialGradient><filter id="gr${i}"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0"/></filter></defs><rect width="320" height="180" fill="url(#tg${i})"/><rect width="320" height="180" filter="url(#gr${i})"/><text x="22" y="40" style="font:700 10px Chakra Petch;fill:${ac};letter-spacing:2px">VETERAN FILMS · ${n}</text><text x="22" y="132" style="font:900 ${fs}px Unbounded;fill:#fff">${r[0]}</text><rect x="22" y="146" width="40" height="3" fill="${ac}"/><text x="298" y="40" text-anchor="end" style="font:900 34px Unbounded;fill:${ac};opacity:.35">${n}</text></svg>`};
 let rcat='all',rall=false;
 const drawReels=()=>{const list=reels.filter(r=>rcat==='all'||r[6]===rcat).sort((a,b)=>rnew?b[8]-a[8]:a[8]-b[8]),lim=rall||rcat!=='all'?list.length:7;
  $('#rsort').textContent=rnew?'Newest first ↓':'Oldest first ↑';$('#rsort').setAttribute('aria-pressed',String(!rnew));
@@ -486,6 +479,10 @@ $('#rcats').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c
 $('#rmore').addEventListener('click',()=>{rall=true;drawReels()});
 $('#rsort').addEventListener('click',()=>{rnew=!rnew;drawReels()});
 drawReels();
+
+/* writing */
+const APAL=['#96EEBB','#8b6cf0','#ffc21a','#6fb6ff','#ff8fc8','#4fd1ff'];
+$('#arts').innerHTML=(C.articles||[]).map((a,i)=>({...a,d:xdate(a.post),i})).sort((x,y)=>y.d-x.d).map(a=>`<a class="art" href="https://x.com/its_veteran1/status/${a.post}" target="_blank" rel="noopener" style="--ac:${APAL[a.i%APAL.length]}"><div class="top"><span class="pj">${a.project}</span><span>${a.read||'X article'}</span></div><h3>${a.title}</h3><div class="bot"><span>${fdate(a.d)} · ${ago(a.d)}</span><b>Read on X ↗</b></div></a>`).join('');
 
 /* medals */
 $('#medals').innerHTML=Array.from({length:5},(_,i)=>`<svg viewBox="0 0 52 58" style="transition-delay:${i*.16}s"><path d="M26 2l22 12v30L26 56 4 44V14z" fill="var(--gold)"/><path d="M26 9l16 9v22l-16 9-16-9V18z" fill="none" stroke="#06170e" stroke-opacity=".35" stroke-width="2"/><text x="26" y="35" text-anchor="middle" style="font:900 17px Unbounded;fill:#06170e">${i+1}</text></svg>`).join('');
@@ -507,12 +504,7 @@ const type=()=>{const pre=$('#tt'),id=++tt;if(still){pre.innerHTML=lines.map(([c
 $('#replay').addEventListener('click',type);
 
 /* identity vault */
-const ids=[
- ['id-pfp','Main PFP','The pilot. Purple beret, gold goggles, mint skies. My face across Web3.'],
- ['id-helmet','Bricktopian NFT · Hard hat','A Bricktopian NFT I own. Hard hat on, building in public.'],
- ['id-tongue','Bricktopian NFT · Original','My other Bricktopian NFT, part of the same identity.'],
- ['id-penguin','Penguin','The side character. Same callsign, stitched right on the hood.']
-];
+const ids=C.identities.map(x=>[x.img,x.name,x.about]);
 const vc=$('#vc'),vx=vc.getContext('2d'),stage=$('#stage'),G=22;
 const ims=ids.map(d=>{const im=new Image();im.src=`assets/${d[0]}.jpg`;return im});
 let S=0,offs=[],cur=0,prev=-1,t0=-1e9,vraf=0,touched=false,auto=0,inView=false;
