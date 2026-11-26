@@ -236,6 +236,19 @@ input:focus,textarea:focus{outline:2px solid var(--mint);border-color:transparen
 #toast.on{translate:-50% 0;visibility:visible}
 footer{border-top:1px solid var(--line);padding:26px max(5vw,16px);color:var(--dim);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.sr{padding:0 max(5vw,16px) clamp(40px,6vw,80px)}
+.srf{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:#000;aspect-ratio:16/9;max-height:78vh;width:100%;box-shadow:0 40px 90px -40px rgba(0,0,0,.7),0 0 0 1px color-mix(in srgb,var(--mint) 18%,transparent)}
+.srf video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.srf::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(3,6,5,.82) 0%,rgba(3,6,5,0) 48%);pointer-events:none}
+.srt{position:absolute;left:clamp(18px,3.5vw,44px);bottom:clamp(18px,3.5vw,40px);right:clamp(18px,3.5vw,44px);z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;color:#eaf6ef}
+.srt .hud{color:#96EEBB;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.srt h2{color:#eaf6ef;font-size:clamp(22px,3.4vw,42px);margin-top:6px;max-width:18ch}
+.srb{display:flex;gap:10px}
+.srb button{min-height:44px;padding:0 18px;border-radius:99px;border:1.5px solid #96EEBB;background:rgba(3,6,5,.55);color:#96EEBB;font:700 13px "Chakra Petch",sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(6px);transition:background .2s,color .2s}
+.srb button:hover,.srb button[aria-pressed=true]{background:#96EEBB;color:#06170e}
+.srl{position:absolute;top:16px;left:16px;z-index:2;font:700 12.5px "Chakra Petch";color:#eaf6ef;background:rgba(3,5,6,.72);border:1px solid rgba(255,255,255,.16);border-radius:99px;padding:4px 12px;display:inline-flex;gap:8px;align-items:center}
+.srl::before{content:"";width:7px;height:7px;border-radius:50%;background:#ff4d5e;animation:ping 1.8s infinite}
+@media(max-width:600px){.srf{aspect-ratio:4/5;border-radius:18px}.srt h2{font-size:22px}}
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
 
@@ -252,7 +265,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 
 <nav><div class="wrap">
   <a class="me" href="#top"><img src="assets/pfp.jpg" alt="">VETERAN</a>
-  <div class="links"><a href="#identity">Identity</a><a href="#posts">Posts</a><a href="#map">Star map</a><a href="#cinema">Cinema</a><a href="#writing">Writing</a><a href="#eng">Engineering</a></div>
+  <div class="links"><a href="#reel">Showreel</a><a href="#identity">Identity</a><a href="#posts">Posts</a><a href="#map">Star map</a><a href="#cinema">Cinema</a><a href="#writing">Writing</a><a href="#eng">Engineering</a></div>
   <button class="tog" id="tog" type="button" aria-label="Switch light or dark mode"></button>
   <a class="btn p s" href="#comms">Hire me</a>
 </div></nav>
@@ -282,6 +295,17 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
     <div class="bars"></div>
   </div></div>
 </div></header>
+
+<section class="sr" id="reel" aria-label="Featured showreel"><div class="wrap">
+  <div class="srf">
+    <video id="srv" src="assets/veteran-reel.mp4" poster="assets/veteran-reel-poster.jpg" muted loop playsinline preload="metadata" aria-label="Veteran showreel: the pilot walks the city, masks up and swings across the skyline"></video>
+    <span class="srl">Transmission 001</span>
+    <div class="srt">
+      <div><div class="hud">AI short · Seedance · ElevenLabs</div><h2>It starts on the street. It ends in the sky.</h2></div>
+      <div class="srb"><button id="srp" type="button" aria-pressed="false">Pause</button><button id="srs" type="button" aria-pressed="false">Sound on</button></div>
+    </div>
+  </div>
+</div></section>
 
 <div class="tick" aria-label="What I do"><div id="tk"></div></div>
 
@@ -562,6 +586,16 @@ const sky=()=>{const dy=(scrollY-sy0)*.15;sy0=scrollY;sx.clearRect(0,0,SW,SH);fo
 addEventListener('resize',()=>{sizeSky();if(still)sky()});
 readStar();sizeSky();sky();
 }
+</script>
+<script>
+(()=>{const v=document.getElementById('srv'),p=document.getElementById('srp'),m=document.getElementById('srs');if(!v)return;
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;let user=false,want=!still;
+const sync=()=>{p.textContent=v.paused?'Play':'Pause';p.setAttribute('aria-pressed',String(v.paused));m.textContent=v.muted?'Sound on':'Sound off';m.setAttribute('aria-pressed',String(!v.muted))};
+const go=()=>{const r=v.play();if(r&&r.catch)r.catch(()=>{});};
+new IntersectionObserver(es=>{const on=es[0].isIntersecting;if(on&&want)go();else if(!on&&!v.paused)v.pause();},{threshold:.25}).observe(v);
+p.addEventListener('click',()=>{if(v.paused){want=true;go()}else{want=false;v.pause()}});
+m.addEventListener('click',()=>{v.muted=!v.muted;if(!v.muted&&!user){user=true;v.currentTime=0}want=true;go();sync()});
+['play','pause','volumechange'].forEach(e=>v.addEventListener(e,sync));sync();})();
 </script>
 </body>
 </html>
