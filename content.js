@@ -16,7 +16,7 @@ window.CONTENT = {
   ],
 
   /* ---------- STAR MAP: YOUR AGENCY (centre star) ---------- */
-  home: { name: 'Verge Collective', label: 'Home base · my agency', about: 'My own UGC and KOL agency. I assemble creator squads, write the proposals and run campaigns from brief to posted entries.', tags: ['UGC', 'KOL', 'Proposals'] },
+  home: { name: 'Verge Collective', label: 'Home base', about: 'UGC and KOL agency. I assemble creator squads, write the proposals and run campaigns from brief to posted entries.', tags: ['UGC', 'KOL', 'Proposals'] },
 
   /* ---------- STAR MAP: AGENCIES I'VE WORKED WITH ----------
      logo is optional. Without one, the star shows initials.   */
